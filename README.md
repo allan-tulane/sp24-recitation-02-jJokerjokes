@@ -58,7 +58,7 @@ print(work_calc(400, 1, 20, lambda n: n)) returns 422
 
 **TODO: your answer goes here**
 
-for all cases,  $W(n) = \log_b n + n^(\log_b a) = O(n^(\log_b a))$
+for all cases,  $W(n) = \log_b n + n^(\log_b a) = O(n^\log_b a)$
 
 - [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
 

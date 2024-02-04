@@ -41,7 +41,7 @@ where $W(1) = 1$.
  
  for $f(n) = 1$, $W(n) = aW(n/b)+1$, therefore, it should be $O(\log_b n)$.
 
- for $f(n) = \log n$, $W(n) = aW(n/b) + \log n$, based of the change of base formula, $W(n) = aW(n/b) + \log n = \log_b(n) + \log n = (\log b)/(_log n) + _log n  = \log (n/b) + \log n = O(\log n)$.
+ for $f(n) = \log n$, $W(n) = aW(n/b) + \log n$, based of the change of base formula, $W(n) = aW(n/b) + \log n = \log_b n + \log n = (\log b)/(\log n) + \log n  = \log (n/b) + \log n = O(\log n)$.
 
  for $f(n) = n$, $W(n) = aW(n/b) + n$, therefore, it should be $O(n)$.
 

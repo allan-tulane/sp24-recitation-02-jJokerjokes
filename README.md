@@ -45,6 +45,11 @@ where $W(1) = 1$.
 
  for $f(n) = n$, $W(n) = aW(n/b) + n$, therefore, it should be $O(n)$.
 
+testing with a = 1, b = 20, n = 400:
+print(work_calc(100, 1, 20, lambda n: 1))  returns 4
+print(work_calc(400, 1, 20, lambda n: math.log(n)))  returns 9.987196820661973
+print(work_calc(400, 1, 20, lambda n: n)) returns 422 
+
 - [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 
 
 **TODO: your answer goes here**

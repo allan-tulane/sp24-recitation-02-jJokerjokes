@@ -5,50 +5,31 @@ CMPS 2200  Recitation 2
 ### the only imports needed are here
 import tabulate
 import time
+import math
 ###
 
 def simple_work_calc(n, a, b):
-	"""Compute the value of the recurrence $W(n) = aW(n/b) + n
+  if n == 1:
+    return 1
+  else:
+    return a * simple_work_calc(n // b, a, b) + n
 
-	Params:
-	n......input integer
-	a......branching factor of recursion tree
-	b......input split factor
-
-	Returns: the value of W(n).
-	"""
-	# TODO
-	pass
 
 def work_calc(n, a, b, f):
-	"""Compute the value of the recurrence $W(n) = aW(n/b) + f(n)
+  if n == 1:
+    return 1 + f(1)
+  else:
+    return a * work_calc(n // b, a, b, f) + f(n)
 
-	Params:
-	n......input integer
-	a......branching factor of recursion tree
-	b......input split factor
-	f......a function that takes an integer and returns 
-           the work done at each node 
 
-	Returns: the value of W(n).
-	"""
-	# TODO
-	pass
+
+
 
 def span_calc(n, a, b, f):
-	"""Compute the span associated with the recurrence $W(n) = aW(n/b) + f(n)
-
-	Params:
-	n......input integer
-	a......branching factor of recursion tree
-	b......input split factor
-	f......a function that takes an integer and returns 
-           the work done at each node 
-
-	Returns: the value of W(n).
-	"""
-	# TODO
-	pass
+  if n <= 1:
+    return f(n)
+  else:
+    return max(span_calc(n // b, a, b, f) for _ in range(a)) + f(n)
 
 
 
@@ -96,9 +77,15 @@ def compare_span(span_fn1, span_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000])
 		# compute W(n) using current a, b, f
 		result.append((
 			n,
-			span_fn1,
-			span_fn2
+			span_fn1(n),
+			span_fn2(n)
 			))
 	return result
 	
 
+span1 = lambda n: span_calc(n, 2, 2, lambda n: 1)
+span2 = lambda n: span_calc(n, 2, 2, lambda n: n)
+span3 = lambda n: span_calc(n, 2, 2, lambda n: math.log(n))
+
+print(compare_span(span1,span2))
+print(compare_span(span1,span3))
